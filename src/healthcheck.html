@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>MTNI Yesterday Counts Report</title>
+    <style>
+        body {
+          font-family: "Century Gothic", sans-serif;
+          font-size: 11px;
+          margin: 20px;
+          background: #f9f9f9;
+          color: black;
+        }
+        h1 {
+          color: #004d40; /* dark teal */
+          margin-bottom: 5px;
+          font-size: 18px;
+          font-weight: 700;
+        }
+        .total-count {
+          font-size: 11px;
+          color: black;
+          margin-bottom: 20px;
+          font-weight: 600;
+        }
+        table {
+          border-collapse: collapse;
+          width: 100%;
+          max-width: 900px;
+          background: white;
+          font-size: 11px;
+          box-shadow: 0 0 8px rgba(0, 128, 128, 0.1);
+          color: black;
+        }
+        th, td {
+          border: 1px solid #008080; /* teal */
+          padding: 12px 20px;
+          text-align: center;
+        }
+        th {
+          background-color: #008080; /* teal */
+          color: white;
+          font-weight: 600;
+          letter-spacing: 0.05em;
+        }
+        td:first-child {
+          text-align: left;
+          font-weight: 600;
+          color: black;
+        }
+        .summary {
+          max-width: 900px;
+          background: #e0f2f1;
+          border-left: 6px solid #008080;
+          padding: 15px 20px;
+          margin-top: 30px;
+          font-size: 11px;
+          color: black;
+          font-weight: 600;
+          line-height: 1.4;
+        }
+        .red-row {
+          color: red;
+          font-weight: normal;
+        }
+        .red-row td:first-child {
+          font-weight: 600; /* bold for Source Name */
+          color: red;
+          text-align: left;
+        }
+    </style>
+</head>
+<body>
+
+<h1>MTNI Yesterday Counts Report (2025-07-18)</h1>
+<div class="total-count">
+    The Total Data Processed - 85934 ~ 0.00 Billion
+</div>
+
+<table>
+    <thead>
+    <tr>
+        <th>Source Name</th>
+        <th>File Count</th>
+        <th>Record Count</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>Ability Recieve</td>
+        <td>123</td>
+        <td>45678</td>
+    </tr>
+    <tr>
+        <td>Middleware</td>
+        <td>45</td>
+        <td>9876</td>
+    </tr>
+    <tr>
+        <td>Subscriber</td>
+        <td>78</td>
+        <td>12345</td>
+    </tr>
+    <tr class="red-row">
+        <td>U Ability DTH</td>
+        <td>0</td>
+        <td>0</td>
+    </tr>
+    <tr>
+        <td>U Ability Schedule</td>
+        <td>34</td>
+        <td>5678</td>
+    </tr>
+    <tr>
+        <td>Bil ICT Rec Count</td>
+        <td>12</td>
+        <td>3456</td>
+    </tr>
+    <tr>
+        <td>TAPIN CDR</td>
+        <td>67</td>
+        <td>8901</td>
+    </tr>
+    </tbody>
+</table>
+
+<div class="summary">
+    All Sources are processed data for Yesterday!<br><br>
+    If any source contain file count and record count as Zero[0], please check the source in NiFi or DMS for more detail.
+</div>
+
+</body>
+</html>

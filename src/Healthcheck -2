@@ -1,0 +1,35 @@
+#!/bin/bash
+rm /data/rafm/scripts/monitoring_scripts/polled_backlog/direc_polled.txt
+rm /data/rafm/scripts/monitoring_scripts/polled_backlog/eam_rpt_polled.txt
+export POLLED_DIRS_CONF=/data/rafm/scripts/monitoring_scripts/polled_backlog/polled_dirs.cfg
+export RPT=/data/rafm/scripts/monitoring_scripts/polled_backlog/direc_polled.txt
+export RPT_EAM=/data/rafm/scripts/monitoring_scripts/polled_backlog/eam_rpt_polled.txt
+export POLLED_DIR=/data01/RAFM/DMS/
+
+
+for i in `grep ^dirsp $POLLED_DIRS_CONF|awk '{print $2}'`
+        do
+                count=`ls $POLLED_DIR$i|wc -l`
+echo "direcStat|$i|$count">>$RPT
+done
+
+           for i in `cat $RPT | grep direcStat|awk -F '|' '{print $2}'`
+                do
+                    direc_name=$POLLED_DIR$i
+                        file_count=`cat $RPT| grep -w $i|awk -F '|' '{print $3}'`
+                               warn_cnt=`grep ^dir $POLLED_DIRS_CONF|grep -w $i|awk '{print $3}'`
+                               crit_cnt=`grep ^dir $POLLED_DIRS_CONF|grep -w $i|awk '{print $4}'`
+
+        if [ $file_count -ge $warn_cnt ]
+                        then
+                        echo "Backlog exists in the following directory:" > $RPT_EAM;
+                                echo $direc_name $file_count>> $RPT_EAM;
+                            cat $RPT_EAM | mailx -s "MTNI Polled Backlogs" deepa.m@subex.com anad@subex.com mellam.sanjay@subex.com bhavya.v@subex.com ankit.keshri@subex.com s.manasa@subex.com koneti.navya@subex.com lakshmideepthi@subex.com
+                          elif [ $file_count -ge $crit_cnt ]
+                        then
+                             dirStatus='PROBLEM';
+                        else
+                            dirStatus='No Backlog'
+                        fi
+
+                        done;
