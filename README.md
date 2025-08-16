@@ -1,7 +1,7 @@
-<h2 style="color:red; font-weight:bold;">Comprehensive list of most asked Java interview questions for 0–2+ year experience</h2>
+<h2>Comprehensive list of most asked Java interview questions for 0–2+ year experience</h2>
 <hr>
 
-<h3 style="color:red; font-weight:bold;">1. Core Java Basics</h3>
+<h3>1. Core Java Basics</h3>
 <ul>
   <li>Difference between JDK, JRE, and JVM</li>
   <li>What are the main features of Java</li>
@@ -12,7 +12,7 @@
 </ul>
 <hr>
 
-<h3 style="color:red; font-weight:bold;">2. Data Types & Operators</h3>
+<h3>2. Data Types & Operators</h3>
 <ul>
   <li>Primitive vs non-primitive data types</li>
   <li>Implicit and explicit type casting</li>
@@ -21,7 +21,7 @@
 </ul>
 <hr>
 
-<h3 style="color:red; font-weight:bold;">3. Control Statements & Loops</h3>
+<h3>3. Control Statements & Loops</h3>
 <ul>
   <li>Difference between while, do-while, and for loops</li>
   <li>When to use break vs continue</li>
@@ -29,7 +29,7 @@
 </ul>
 <hr>
 
-<h3 style="color:red; font-weight:bold;">4. OOP Concepts</h3>
+<h3>4. OOP Concepts</h3>
 <ul>
   <li>Explain OOP concepts: Encapsulation, Inheritance, Polymorphism, Abstraction</li>
   <li>Difference between abstract class and interface</li>
@@ -40,7 +40,7 @@
 </ul>
 <hr>
 
-<h3 style="color:red; font-weight:bold;">5. Collections & Data Structures</h3>
+<h3>5. Collections & Data Structures</h3>
 <ul>
   <li>Difference between Array, ArrayList, LinkedList, HashSet, HashMap</li>
   <li>Difference between List, Set, Map</li>
@@ -51,7 +51,7 @@
 </ul>
 <hr>
 
-<h3 style="color:red; font-weight:bold;">6. Exception Handling</h3>
+<h3>6. Exception Handling</h3>
 <ul>
   <li>Difference between checked and unchecked exceptions</li>
   <li>Difference between throw and throws</li>
@@ -60,7 +60,7 @@
 </ul>
 <hr>
 
-<h3 style="color:red; font-weight:bold;">7. Multithreading & Concurrency</h3>
+<h3>7. Multithreading & Concurrency</h3>
 <ul>
   <li>Difference between process and thread</li>
   <li>How to create a thread in Java (extends Thread vs implements Runnable)</li>
@@ -71,7 +71,7 @@
 </ul>
 <hr>
 
-<h3 style="color:red; font-weight:bold;">8. Java 8 & Above (Commonly Asked)</h3>
+<h3>8. Java 8 & Above (Commonly Asked)</h3>
 <ul>
   <li>Lambda expressions and functional interfaces</li>
   <li>Streams API basics (filter, map, reduce)</li>
@@ -81,7 +81,7 @@
 </ul>
 <hr>
 
-<h3 style="color:red; font-weight:bold;">9. String & StringBuilder/StringBuffer</h3>
+<h3>9. String & StringBuilder/StringBuffer</h3>
 <ul>
   <li>Difference between String, StringBuilder, StringBuffer</li>
   <li>Immutability of String</li>
@@ -89,7 +89,7 @@
 </ul>
 <hr>
 
-<h3 style="color:red; font-weight:bold;">10. File I/O & Serialization</h3>
+<h3>10. File I/O & Serialization</h3>
 <ul>
   <li>Difference between FileReader and BufferedReader</li>
   <li>Difference between Serializable and Externalizable</li>
@@ -97,7 +97,7 @@
 </ul>
 <hr>
 
-<h3 style="color:red; font-weight:bold;">11. Misc / Conceptual</h3>
+<h3>11. Misc / Conceptual</h3>
 <ul>
   <li>Difference between == and equals() for objects</li>
   <li>What is garbage collection and how it works</li>
@@ -107,10 +107,98 @@
 </ul>
 <hr>
 
-<h3 style="color:red; font-weight:bold;">Tips for Preparation</h3>
+<h3>Tips for Preparation</h3>
 <ul>
   <li>Be ready to write small programs to demonstrate your answers (like reversing a string, finding duplicates, implementing simple collections).</li>
   <li>Understand internals, not just syntax. For example, how HashMap works or why String is immutable.</li>
   <li>Prepare OOP examples from real-world scenarios.</li>
+</ul>
+<hr>
+
+<h2>Top 50 Must-Know Questions for 0–2 years Java developers</h2>
+<hr>
+
+<h3>1. Core Java Basics</h3>
+<ul>
+  <li>Check if a number is even or odd</li>
+  <li>Find the largest of three numbers</li>
+  <li>Calculate factorial of a number (using loops and recursion)</li>
+  <li>Sum of digits of a number</li>
+  <li>Reverse a number</li>
+</ul>
+<hr>
+
+<h3>2. Strings</h3>
+<ul>
+  <li>Reverse a string without using built-in functions</li>
+  <li>Check if a string is a palindrome</li>
+  <li>Count vowels and consonants in a string</li>
+  <li>Check if two strings are anagrams</li>
+  <li>Remove whitespaces from a string</li>
+</ul>
+<hr>
+
+<h3>3. Arrays & Loops</h3>
+<ul>
+  <li>Find duplicate elements in an array</li>
+  <li>Find the second largest number in an array</li>
+  <li>Sort an array (bubble sort / selection sort)</li>
+  <li>Implement binary search</li>
+  <li>Merge two arrays</li>
+</ul>
+<hr>
+
+<h3>4. Object-Oriented Programming (OOP)</h3>
+<ul>
+  <li>Create a class Student with name, roll, and marks, display details</li>
+  <li>Create a BankAccount class with deposit and withdrawal methods</li>
+  <li>Demonstrate inheritance: Vehicle → Car, Bike</li>
+  <li>Demonstrate method overloading and overriding</li>
+  <li>Implement a simple library system (add, issue, return books)</li>
+</ul>
+<hr>
+
+<h3>5. Collections</h3>
+<ul>
+  <li>Remove duplicates from a list</li>
+  <li>Count frequency of elements in an array/list</li>
+  <li>Sort a list of strings</li>
+  <li>Demonstrate usage of HashMap (store key-value pairs)</li>
+  <li>Use TreeSet/TreeMap to store sorted data</li>
+</ul>
+<hr>
+
+<h3>6. Exception Handling</h3>
+<ul>
+  <li>Handle division by zero using try-catch</li>
+  <li>Create a custom exception and throw it</li>
+  <li>Read a file and handle FileNotFoundException</li>
+</ul>
+<hr>
+
+<h3>7. Multithreading & Concurrency</h3>
+<ul>
+  <li>Create a thread by extending Thread class</li>
+  <li>Create a thread by implementing Runnable interface</li>
+  <li>Demonstrate synchronized method to avoid race condition</li>
+</ul>
+<hr>
+
+<h3>8. Java 8 Features</h3>
+<ul>
+  <li>Use lambda expression to filter a list</li>
+  <li>Use Streams to find even numbers in a list</li>
+  <li>Use map and reduce to sum numbers in a list</li>
+  <li>Use Optional to handle null values</li>
+</ul>
+<hr>
+
+<h3>9. Mini Projects / Combined Concepts</h3>
+<ul>
+  <li>Simple calculator (add, subtract, multiply, divide)</li>
+  <li>Tic-tac-toe or number guessing game</li>
+  <li>Student management system (add, search, delete student)</li>
+  <li>Employee salary calculation system using OOP</li>
+  <li>Library management system with collections</li>
 </ul>
 <hr>
