@@ -1,1 +1,8 @@
-/out/
+# IntelliJ IDEA
+.idea/
+*.iml
+out/
+
+# OS junk files
+.DS_Store
+Thumbs.db
