@@ -1,4 +1,4 @@
-import java.util.scanner;
+import java.util.Scanner;
 
 public class ReverseString
 {
@@ -6,6 +6,7 @@ public class ReverseString
     {
         Scanner sc = new Scanner(System.in);
 
-        String str = sc.nextString();
+        System.out.print("Enter the String: ");
+        String str = sc.next();
     }
 }
