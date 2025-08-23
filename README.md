@@ -136,7 +136,7 @@
   <li>Remove whitespaces from a string</li>
   <li>Check if two strings are anagrams</li>
   
-<h5>Theoretical Explanation of Anagrams:</h5>
+<p><strong>Theoretical Explanation of Anagrams:</strong></p>
     
 <p><strong>Definition:</strong> Two strings are anagrams if they contain the same characters with the same frequency, but possibly in a different order.</p>
  <ul>
