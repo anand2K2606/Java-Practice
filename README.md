@@ -133,15 +133,23 @@
   <li>Reverse a string without using built-in functions</li>
   <li>Check if a string is a palindrome</li>
   <li>Count vowels and consonants in a string</li>
-  <li>Check if two strings are anagrams</li>
   <li>Remove whitespaces from a string</li>
+  <li>Check if two strings are anagrams</li>
+  
+<h5>Theoretical Explanation of Anagrams:</h5>
+    
+<p><strong>Definition:</strong> Two strings are anagrams if they contain the same characters with the same frequency, but possibly in a different order.</p>
+ <ul>
+    <li><strong>Example:</strong> <code>"listen"</code> and <code>"silent"</code> → ✅ anagrams.</li>
+    <li><strong>Example:</strong> <code>"hello"</code> and <code>"world"</code> → ❌ not anagrams.</li>
+</ul>
 </ul>
 <hr>
 
 <h3>3. Arrays & Loops</h3>
 <ul>
   <li>Find duplicate elements in an array</li>
-  <li>Find the second largest number in an array</li>
+  <li>Find the second-largest number in an array</li>
   <li>Sort an array (bubble sort / selection sort)</li>
   <li>Implement binary search</li>
   <li>Merge two arrays</li>
