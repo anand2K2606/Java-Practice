@@ -9,12 +9,15 @@ public class CountVowelConsonants
         System.out.print("Enter the Desired String: ");
         String input = sc.nextLine().toLowerCase();
 
+        //Initialise the Variable
         int vowels = 0;
         int consonants = 0;
         int spcialchar = 0;
+
         for (int i = 0; i < input.length(); i++)
         {
             char temp = input.charAt(i);
+
             if ((temp == 'a') || (temp == 'e') || (temp == 'i') || (temp == 'o') || (temp == 'u'))
             {
                 vowels++;
