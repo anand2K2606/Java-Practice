@@ -1,6 +1,8 @@
 <h2>Comprehensive list of most asked Java interview questions for 0–2+ year experience</h2>
 <hr>
 
+<strong>Try this out: <a href="https://takeuforward.org/java/java-tutorials-learn-java-for-free-best-resource">Java Tutorials - Learn Java for Free</a> </strong>
+
 <h3>1. Core Java Basics</h3>
 <ul>
   <li>Difference between JDK, JRE, and JVM</li>
