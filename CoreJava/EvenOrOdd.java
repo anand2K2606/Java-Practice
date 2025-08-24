@@ -1,4 +1,4 @@
-package Practice;
+package CoreJava;
 
 import java.util.Scanner;
 
@@ -7,6 +7,7 @@ public class EvenOrOdd {
     {
         System.out.print("Enter Your Desired Number: ");
         Scanner num = new Scanner(System.in);
+
         int n= num.nextInt();
 
         if (n%2==0)
@@ -17,7 +18,6 @@ public class EvenOrOdd {
         {
             System.out.println("Number is Odd");
         }
-        
+        num.close();
     }
-
 }

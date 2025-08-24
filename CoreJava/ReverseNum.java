@@ -1,4 +1,5 @@
-package Practice;
+package CoreJava;
+
 import java.util.Scanner;
 
 public class ReverseNum

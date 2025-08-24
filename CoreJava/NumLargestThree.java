@@ -1,4 +1,4 @@
-package Practice;
+package CoreJava;
 
 import java.util.Scanner;
 
@@ -33,7 +33,6 @@ public class NumLargestThree
         {
             System.out.println(num3 + " Is the largest number among three");
         }
-
         sc.close();
     }
 }

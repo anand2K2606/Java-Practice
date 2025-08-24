@@ -1,4 +1,4 @@
-package Practice;
+package CoreJava;
 
 import java.util.Scanner;
 
@@ -33,7 +33,6 @@ public class PrimeNum {
                 System.out.println("This is NOT a Prime Number");
             }
         }
-
         num.close();
     }
 }
