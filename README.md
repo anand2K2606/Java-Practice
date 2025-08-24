@@ -1,7 +1,19 @@
 <h2>Comprehensive list of most asked Java interview questions for 0–2+ year experience</h2>
 <hr>
 
-<strong>Try this out: <a href="https://takeuforward.org/java/java-tutorials-learn-java-for-free-best-resource">Java Tutorials - Learn Java for Free</a> </strong>
+<h4>
+  Try this out: 
+  <a href="https://takeuforward.org/java/java-tutorials-learn-java-for-free-best-resource" target="_blank">
+    Java Tutorials - Learn Java for Free
+  </a>
+</h4>
+
+<h4>
+  For Complete DSA Course: 
+  <a href="https://takeuforward.org/strivers-a2z-dsa-course/strivers-a2z-dsa-course-sheet-2/" target="_blank">
+    Striver's A2Z DSA Course Sheet
+  </a>
+</h4>
 
 <h3>1. Core Java Basics</h3>
 <ul>
