@@ -1,16 +1,11 @@
 # 1. Understand the Role & Expectations
 
-• Microsoft Power Automate expertise: Build automated workflows across
-enterprise apps (SharePoint, Teams, Outlook, Dataverse, Azure Functions,
-REST APIs). • Full Stack development: Hands-on with back-end
-(Java/Python/.NET) and front-end (React/Angular/HTML/CSS/JS) plus REST
-APIs, microservices. • Automation & Cloud: Design secure, scalable flows
-integrated with Azure/AWS services. • OOP & Design Patterns: Ability to
-design extensible code using patterns (Factory, Singleton, Observer,
-Strategy, etc.). • DevOps & Modern Practices: Git, CI/CD (Jenkins,
-ArgoCD), Docker, Kubernetes, IaC (Terraform/ARM templates). • Growth
-mindset & customer focus: Emphasize continuous learning, certifications,
-and collaboration across teams and geographies.
+• Microsoft Power Automate expertise: Build automated workflows across enterprise apps (SharePoint, Teams, Outlook, Dataverse, Azure Functions, REST APIs). 
+• Full Stack development: Hands-on with back-end(Java/Python/.NET) and front-end (React/Angular/HTML/CSS/JS) plus RESTAPIs, microservices. 
+• Automation & Cloud: Design secure, scalable flows integrated with Azure/AWS services. 
+• OOP & Design Patterns: Ability to design extensible code using patterns (Factory, Singleton, Observer,Strategy, etc.). 
+• DevOps & Modern Practices: Git, CI/CD (Jenkins,ArgoCD), Docker, Kubernetes, IaC (Terraform/ARM templates). 
+• Growth mindset & customer focus: Emphasize continuous learning, certifications, and collaboration across teams and geographies.
 
 # 2. 4-Week Preparation Roadmap
 
