@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Shopkeeper Customer Ledger</title>
+    <style>
+        body { font-family: 'Segoe UI', Arial; margin: 30px; background: #f0f2f5; }
+        .container { max-width: 1000px; margin: auto; background: white; padding: 20px; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+        .controls { display: flex; gap: 10px; margin-bottom: 20px; }
+        input { flex: 1; padding: 12px; border: 1px solid #ddd; border-radius: 4px; }
+        button { padding: 12px 20px; background: #2563eb; color: white; border: none; border-radius: 4px; cursor: pointer; }
+
+        table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+        th { background: #334155; color: white; padding: 12px; text-align: left; }
+        td { padding: 12px; border-bottom: 1px solid #eee; }
+
+        /* Color Logic Classes */
+        .row-complete { background-color: #dcfce7 !important; color: #166534; font-weight: bold; } /* Green */
+        .row-low-risk { background-color: #dbeafe !important; color: #1e40af; } /* Blue */
+        .row-mid-risk { background-color: #fef3c7 !important; color: #92400e; } /* Orange */
+        .row-high-risk { background-color: #fee2e2 !important; color: #991b1b; } /* Red */
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Shop Inventory & Payment Tracker</h2>
+    <div class="controls">
+        <input type="text" id="statusSearch" placeholder="Enter statuses (e.g., paid, pending) or 'all'">
+        <button onclick="fetchData()">Search</button>
+    </div>
+
+    <table id="customerTable">
+        <thead>
+        <tr>
+            <th>Customer Name</th>
+            <th>Payment Status</th>
+            <th>Item Status</th>
+            <th>Total (₹)</th>
+            <th>Paid (₹)</th>
+            <th>Balance (₹)</th>
+            <th>Paid %</th>
+        </tr>
+        </thead>
+        <tbody id="tableBody"></tbody>
+    </table>
+</div>
+
+<script>
+    // Mock Data mimicking the Java Backend response
+    const customers = [
+        { name: "Rajesh Kumar", payStatus: "paid", itemStatus: "Given", total: 5000, paid: 5000 },
+        { name: "Anita Rao", payStatus: "pending", itemStatus: "Given", total: 10000, paid: 8000 },
+        { name: "Kevin V.", payStatus: "credit", itemStatus: "Pending", total: 2000, paid: 1000 },
+        { name: "Suresh M.", payStatus: "overdue", itemStatus: "Given", total: 5000, paid: 500 }
+    ];
+
+    function fetchData() {
+        const query = document.getElementById('statusSearch').value.toLowerCase().trim();
+        const tbody = document.getElementById('tableBody');
+        tbody.innerHTML = '';
+
+        const filtered = customers.filter(c => {
+            if (query === 'all' || query === '') return true;
+            const terms = query.split(',').map(t => t.trim());
+            return terms.includes(c.payStatus.toLowerCase());
+        });
+
+        filtered.forEach(c => {
+            const balance = c.total - c.paid;
+            const pct = (c.paid / c.total) * 100;
+            let rowClass = "";
+
+            // LOGIC: Green only if 100% Paid AND Item Given
+            if (pct === 100 && c.itemStatus.toLowerCase() === 'given') {
+                rowClass = "row-complete";
+            } else if (pct >= 70) {
+                rowClass = "row-low-risk";
+            } else if (pct > 30) {
+                rowClass = "row-mid-risk";
+            } else {
+                rowClass = "row-high-risk";
+            }
+
+            tbody.innerHTML += `
+                <tr class="${rowClass}">
+                    <td>${c.name}</td>
+                    <td>${c.payStatus.toUpperCase()}</td>
+                    <td>${c.itemStatus}</td>
+                    <td>${c.total}</td>
+                    <td>${c.paid}</td>
+                    <td>${balance}</td>
+                    <td>${pct.toFixed(0)}%</td>
+                </tr>`;
+        });
+    }
+    // Load all on start
+    fetchData();
+</script>
+</body>
+</html>
