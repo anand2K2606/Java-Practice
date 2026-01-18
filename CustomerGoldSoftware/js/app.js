@@ -10,8 +10,7 @@ const App = {
     initialize: function() {
         console.log('Initializing Gold Shop Management System...');
         
-        // Initialize managers
-        CustomerManager.initializeWithSampleData();
+        // Initialize managers (no sample data)
         UIManager.initialize();
         ExportManager.initialize();
         ImportManager.initialize();
@@ -23,6 +22,7 @@ const App = {
         this.updateUI();
         
         console.log('Application initialized successfully');
+        console.log(`Loaded ${CustomerManager.customers.length} customers from storage`);
     },
     
     // Setup all event listeners
@@ -136,39 +136,34 @@ const App = {
     
     // Handle adding a new customer
     handleAddCustomer: function() {
-        const customerData = {
-            name: document.getElementById('customerName').value,
-            phone: document.getElementById('phone').value,
-            itemDescription: document.getElementById('itemDescription').value,
-            depositAmount: document.getElementById('depositAmount').value || 0,
-            totalAmount: document.getElementById('totalAmountInput').value,
-            itemStatus: document.getElementById('itemStatus').value,
-            paymentStatus: document.getElementById('paymentStatus').value,
-            notes: document.getElementById('notes').value
-        };
-        
-        // Validate required fields
-        const validation = Utils.validateRequiredFields({
-            name: customerData.name,
-            totalAmount: customerData.totalAmount
-        });
-        
-        if (!validation.isValid) {
-            Utils.showNotification(`Please fill in the ${validation.field} field`, true);
-            return;
+        try {
+            const customerData = {
+                name: document.getElementById('customerName').value.trim(),
+                phone: document.getElementById('phone').value.trim(),
+                itemDescription: document.getElementById('itemDescription').value.trim(),
+                depositAmount: parseFloat(document.getElementById('depositAmount').value) || 0,
+                totalAmount: parseFloat(document.getElementById('totalAmountInput').value),
+                itemStatus: document.getElementById('itemStatus').value,
+                paymentStatus: document.getElementById('paymentStatus').value,
+                notes: document.getElementById('notes').value.trim()
+            };
+            
+            // Add customer using the CustomerManager
+            const newCustomer = CustomerManager.add(customerData);
+            
+            // Update UI
+            this.updateUI();
+            
+            // Show success notification
+            Utils.showNotification(`Customer "${newCustomer.name}" added successfully!`);
+            
+            // Reset form
+            this.clearCustomerForm();
+            
+        } catch (error) {
+            // Show error notification
+            Utils.showNotification(error.message, true);
         }
-        
-        // Add customer
-        const newCustomer = CustomerManager.add(customerData);
-        
-        // Update UI
-        this.updateUI();
-        
-        // Show notification
-        Utils.showNotification(`Customer "${newCustomer.name}" added successfully!`);
-        
-        // Reset form
-        this.clearCustomerForm();
     },
     
     // Clear customer form
@@ -215,7 +210,10 @@ const App = {
     // Handle editing a customer
     handleEditCustomer: function(id) {
         const customer = CustomerManager.findById(id);
-        if (!customer) return;
+        if (!customer) {
+            Utils.showNotification('Customer not found', true);
+            return;
+        }
         
         // Populate edit form
         document.getElementById('editId').value = customer.id;
@@ -234,73 +232,81 @@ const App = {
     
     // Handle updating a customer
     handleUpdateCustomer: function() {
-        const id = document.getElementById('editId').value;
-        const customerData = {
-            name: document.getElementById('editCustomerName').value,
-            phone: document.getElementById('editPhone').value,
-            itemDescription: document.getElementById('editItemDescription').value,
-            depositAmount: document.getElementById('editDepositAmount').value || 0,
-            totalAmount: document.getElementById('editTotalAmount').value,
-            itemStatus: document.getElementById('editItemStatus').value,
-            paymentStatus: document.getElementById('editPaymentStatus').value,
-            notes: document.getElementById('editNotes').value
-        };
-        
-        // Validate required fields
-        const validation = Utils.validateRequiredFields({
-            name: customerData.name,
-            totalAmount: customerData.totalAmount
-        });
-        
-        if (!validation.isValid) {
-            Utils.showNotification(`Please fill in the ${validation.field} field`, true);
-            return;
-        }
-        
-        // Update customer
-        const updatedCustomer = CustomerManager.update(id, customerData);
-        
-        if (updatedCustomer) {
-            // Update UI
-            this.updateUI();
+        try {
+            const id = document.getElementById('editId').value;
+            const customerData = {
+                name: document.getElementById('editCustomerName').value.trim(),
+                phone: document.getElementById('editPhone').value.trim(),
+                itemDescription: document.getElementById('editItemDescription').value.trim(),
+                depositAmount: parseFloat(document.getElementById('editDepositAmount').value) || 0,
+                totalAmount: parseFloat(document.getElementById('editTotalAmount').value),
+                itemStatus: document.getElementById('editItemStatus').value,
+                paymentStatus: document.getElementById('editPaymentStatus').value,
+                notes: document.getElementById('editNotes').value.trim()
+            };
             
-            // Close modal
-            this.closeModal();
+            // Update customer
+            const updatedCustomer = CustomerManager.update(id, customerData);
             
-            // Show notification
-            Utils.showNotification(`Customer "${updatedCustomer.name}" updated successfully!`);
+            if (updatedCustomer) {
+                // Update UI
+                this.updateUI();
+                
+                // Close modal
+                this.closeModal();
+                
+                // Show notification
+                Utils.showNotification(`Customer "${updatedCustomer.name}" updated successfully!`);
+            }
+        } catch (error) {
+            Utils.showNotification(error.message, true);
         }
     },
     
     // Handle deleting a customer
     handleDeleteCustomer: function(id) {
-        const customer = CustomerManager.findById(id);
-        if (!customer) return;
-        
-        if (confirm(`Are you sure you want to delete "${customer.name}"? This action cannot be undone.`)) {
-            CustomerManager.delete(id);
-            this.updateUI();
-            Utils.showNotification(`Customer "${customer.name}" deleted successfully!`, true);
+        try {
+            const customer = CustomerManager.findById(id);
+            if (!customer) {
+                Utils.showNotification('Customer not found', true);
+                return;
+            }
+            
+            if (confirm(`Are you sure you want to delete "${customer.name}"? This action cannot be undone.`)) {
+                CustomerManager.delete(id);
+                this.updateUI();
+                Utils.showNotification(`Customer "${customer.name}" deleted successfully!`, true);
+            }
+        } catch (error) {
+            Utils.showNotification(error.message, true);
         }
     },
     
     // Handle toggling payment status
     handleTogglePaymentStatus: function(id) {
-        const customer = CustomerManager.togglePaymentStatus(id);
-        if (customer) {
-            this.updateUI();
-            const status = customer.paymentStatus === 'paid' ? 'Paid' : 'Balance';
-            Utils.showNotification(`Payment status updated to "${status}" for ${customer.name}`);
+        try {
+            const customer = CustomerManager.togglePaymentStatus(id);
+            if (customer) {
+                this.updateUI();
+                const status = customer.paymentStatus === 'paid' ? 'Paid' : 'Balance';
+                Utils.showNotification(`Payment status updated to "${status}" for ${customer.name}`);
+            }
+        } catch (error) {
+            Utils.showNotification(error.message, true);
         }
     },
     
     // Handle toggling item status
     handleToggleItemStatus: function(id) {
-        const customer = CustomerManager.toggleItemStatus(id);
-        if (customer) {
-            this.updateUI();
-            const status = customer.itemStatus === 'given' ? 'Given' : 'Pending';
-            Utils.showNotification(`Item status updated to "${status}" for ${customer.name}`);
+        try {
+            const customer = CustomerManager.toggleItemStatus(id);
+            if (customer) {
+                this.updateUI();
+                const status = customer.itemStatus === 'given' ? 'Given' : 'Pending';
+                Utils.showNotification(`Item status updated to "${status}" for ${customer.name}`);
+            }
+        } catch (error) {
+            Utils.showNotification(error.message, true);
         }
     },
     
@@ -383,6 +389,61 @@ const App = {
     updateUI: function() {
         this.updateCustomerList();
         UIManager.updateDashboard();
+    },
+    
+    // Export all data (for debugging or backup)
+    exportAllData: function() {
+        const data = CustomerManager.exportData();
+        const dataStr = JSON.stringify(data, null, 2);
+        const dataUri = 'data:application/json;charset=utf-8,'+ encodeURIComponent(dataStr);
+        
+        const exportFileDefaultName = `gold-shop-backup-${new Date().toISOString().slice(0,10)}.json`;
+        
+        const linkElement = document.createElement('a');
+        linkElement.setAttribute('href', dataUri);
+        linkElement.setAttribute('download', exportFileDefaultName);
+        linkElement.click();
+        
+        Utils.showNotification('Data backup exported successfully!');
+    },
+    
+    // Import data from backup
+    importBackupData: function(backupData) {
+        try {
+            if (confirm('This will replace all existing data. Continue?')) {
+                const count = CustomerManager.importData(backupData);
+                this.updateUI();
+                Utils.showNotification(`Successfully imported ${count} customers from backup!`);
+                return true;
+            }
+        } catch (error) {
+            Utils.showNotification('Error importing backup data: ' + error.message, true);
+        }
+        return false;
+    },
+    
+    // Clear all data
+    clearAllData: function() {
+        if (confirm('Are you sure you want to clear ALL customer data? This action cannot be undone!')) {
+            CustomerManager.clearAll();
+            this.state.currentFilter = 'all';
+            this.state.currentSearch = '';
+            
+            // Clear search input
+            const searchInput = document.getElementById('searchInput');
+            if (searchInput) searchInput.value = '';
+            
+            // Reset filter buttons
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.dataset.filter === 'all') {
+                    btn.classList.add('active');
+                }
+            });
+            
+            this.updateUI();
+            Utils.showNotification('All customer data has been cleared.', true);
+        }
     }
 };
 
